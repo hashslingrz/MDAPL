@@ -5,3 +5,6 @@ _config.yml
 _build/*
 book/*
 res/design.pptx
+build-env/
+*.egg-info
+scripts/dyalogweb/__pycache__/
