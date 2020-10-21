@@ -11,9 +11,11 @@ As of now, this preprocessing step:
 
 import json
 import re
-import sys
+import logging, sys
 from pathlib import Path
 from ruamel import yaml
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 try:
     with open("book/_toc.yml", "r") as f:
@@ -219,7 +221,13 @@ for dic in data:
 
     with open(f"{filename}.ipynb", "r", encoding="utf8") as f:
         #contents = f.read()
-        conts = json.load(f)
+        try:
+            conts = json.load(f)
+            logging.debug("Processing notebook: %s", f.name)
+            pass
+        except json.decoder.JSONDecodeError:
+            logging.critical("Failed to parse %s. Perhaps a stray character?", f.name)
+            raise
 
     for cellid, cell in enumerate(conts["cells"]):
         lines = cell["source"]
