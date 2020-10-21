@@ -21,5 +21,8 @@ launch_buttons:
     colab_url: ""
 
 sphinx:
+    extra_extensions:
+        - dyalogweb.helloworld
     config:
         html_show_copyright: false
+        todo_include_todos: true
