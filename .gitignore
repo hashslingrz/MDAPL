@@ -1,10 +1,12 @@
 *.dws
 .ipynb_checkpoints
-_toc.yml
-_config.yml
 _build/*
 book/*
 res/design.pptx
+<<<<<<< HEAD
 build-env/
 *.egg-info
 scripts/dyalogweb/__pycache__/
+=======
+*.pdf
+>>>>>>> upstream/master
