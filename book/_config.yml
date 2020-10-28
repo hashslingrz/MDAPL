@@ -22,7 +22,9 @@ launch_buttons:
 
 sphinx:
     extra_extensions:
-        - dyalogweb.helloworld
+        - dyalogweb
+        - dyalogweb.todos
+        - dyalogweb.modtoc
     config:
         html_show_copyright: false
         todo_include_todos: true
