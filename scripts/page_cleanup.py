@@ -18,21 +18,35 @@ def cleanup(nb):
 			item.extract()
 
 	# Remove <html>
-	soup.find("html").replaceWithChildren()
+	try:
+		soup.find("html").replaceWithChildren()
+	except:
+		pass
 
 	# Remove <head>
-	soup.head.extract()
+	try:
+		soup.head.extract()
+	except:
+		pass
 
 	# Remove topbar and sidebar
-	soup.find("div", {"class":"row topbar fixed-top container-xl"}).extract()
-	#topbar.extract()
-	soup.find("div", {"class":"col-12 col-md-3 bd-sidebar site-navigation show"}).extract()
-	#sidebar.extract()
+	try:
+		soup.find("div", {"class":"row topbar fixed-top container-xl"}).extract()
+	except:
+		pass
+
+	try:
+		soup.find("div", {"class":"col-12 col-md-3 bd-sidebar site-navigation show"}).extract()
+	except:
+		pass
 
 	# Modify margin to center page
 	# TODO Fix this with CSS instead of modifying tag attributes
-	mod_attr = soup.find("div", {"class":"col-12 col-md-9 pl-md-3 pr-md-0"})
-	mod_attr["style"] = "margin: auto;"
+	try:
+		mod_attr = soup.find("div", {"class":"col-12 col-md-9 pl-md-3 pr-md-0"})
+		mod_attr["style"] = "margin: auto;"
+	except:
+		pass
 
 	with open((file_path+nb), "w") as fw:
 		fw.write(str(soup))
