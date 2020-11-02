@@ -2,11 +2,14 @@ from bs4 import BeautifulSoup, Doctype
 import glob
 
 #file_path = "../book/_build/_page/Debugging/html"
-file_path = "../book/_build/html/"
-notebooks = glob.glob("../*.ipynb")
-notebooks = [nb[3:-5] for nb in notebooks]
+file_path = "book/_build/html/"
+notebooks = glob.glob("*.ipynb")
+notebooks = [nb[:-6] for nb in notebooks]
 
-def cleanup(nb):
+toc_entries = {}
+sec_entries = {} # ToC for each chapter
+
+def clean_body(nb, chap):
 	html_doc = ""
 	with open((file_path+nb), "r") as fr:
 		html_doc = fr.read()
@@ -23,8 +26,25 @@ def cleanup(nb):
 	except:
 		pass
 
+	# Isolate ToC and sections
 	# Remove <head>
 	try:
+		# Chapter ToC
+		toc = soup.find(id="bd-docs-nav")
+		toc_links = toc.find_all("a", {"class":"reference internal"})
+		for l in toc_links:
+			key = l.contents[0].strip()
+			if key not in toc_entries:
+				toc_entries[key] = l["href"]
+
+		# Section ToC per chapter
+		sec = soup.find(id="bd-toc-nav")
+		sec_links = sec.find_all("a", {"class":"reference internal nav-link"})
+		for l in sec_links:
+			key = l.contents[0].strip()
+			if key not in sec_entries[chap]:
+				sec_entries[chap][key] = l["href"]
+
 		soup.head.extract()
 	except:
 		pass
@@ -48,10 +68,16 @@ def cleanup(nb):
 	except:
 		pass
 
-	with open((file_path+nb), "w") as fw:
-		fw.write(str(soup))
+	#with open((file_path+nb), "w") as fw:
+	#	fw.write(str(soup))
 
 for nb in notebooks:
 	#print(nb)
-	cleanup(nb+"html")
+	if nb not in sec_entries:
+		sec_entries[nb] = {}
+	clean_body(nb+".html", nb)
 
+#for c in sec_entries:
+#	print(c)
+#	for s in sec_entries[c]:
+#		print("   "+sec_entries[c][s])
