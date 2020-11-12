@@ -243,11 +243,11 @@ if __name__ == "__main__":
     if not os.path.exists(BOOK_FOLDER):
         os.makedirs(BOOK_FOLDER)
 
-    try:
-<<<<<<< HEAD
-        filename = Path(dic["file"]).name
-    except KeyError:
-        continue
+    for dic in data:
+        try:
+            filename = Path(dic["file"]).name
+        except KeyError:
+            pass
 
     with open(f"{filename}.ipynb", "r", encoding="utf8") as f:
         #contents = f.read()
@@ -269,27 +269,22 @@ if __name__ == "__main__":
 
         cell["source"] = lines
 
+    
     with open(f"book/{filename}.ipynb", "w", encoding="utf8") as f:
         json.dump(conts, f, indent=2)
-=======
-        with open("book/_toc.yml", "r") as f:
-            data = yaml.safe_load(f)
-    except FileNotFoundError:
-        print("Could not open ToC.")
-        sys.exit()
-
-    for dic in data:
         try:
-            filename = Path(dic["file"]).name
-        except KeyError:
-            continue
+            with open("book/_toc.yml", "r") as f:
+                data = yaml.safe_load(f)
+        except FileNotFoundError:
+            print("Could not open ToC.")
+            sys.exit()
 
         try:
             with open(f"{filename}.ipynb", "r", encoding="utf8") as f:
                 contents = json.load(f)
         except FileNotFoundError:
             copy_md(filename)
-            continue
+            pass
 
         for cell in contents["cells"]:
             lines = cell["source"]
@@ -303,4 +298,3 @@ if __name__ == "__main__":
 
         with open(f"{BOOK_FOLDER}/{filename}.ipynb", "w", encoding="utf8") as f:
             json.dump(contents, f, indent=2)
->>>>>>> upstream/master
