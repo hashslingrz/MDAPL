@@ -25,9 +25,9 @@ launch_buttons:
 
 sphinx:
     extra_extensions:
-        - dyalogweb
-        - dyalogweb.todos
-        - dyalogweb.modtoc
+        - dyalogweb.tryaplbtn
+#        - dyalogweb.todos
+#        - dyalogweb.modtoc
     config:
         html_show_copyright: false
-        todo_include_todos: true
+#        todo_include_todos: true
