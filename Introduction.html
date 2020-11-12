@@ -31,6 +31,8 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tryapl_button.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,6 +46,7 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/tryapl_button.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -55,23 +58,14 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://dyalogdev.wpengine.com/mastering-dyalog-apl/Introduction.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Getting Started" href="Getting-Started.html" />
+    <link rel="next" title="Getting Started" href="Getting-Started.html" />
+    <link rel="prev" title="Debugging" href="Debugging.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://dyalogdev.wpengine.com/mastering-dyalog-apl/Introduction.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="Introduction - Will You Play APL With Me?" />
-<meta property="og:description" content="Introduction - Will You Play APL With Me?    Will You Follow Us?  We would like to have you discover a new land, a land where people who may or may not be speci" />
-
-
-<meta name="twitter:card" content="summary" />
 
 
   </head>
@@ -98,42 +92,40 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="#">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Introduction - Will You Play APL With Me?
   </a>
  </li>
-</ul>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Getting-Started.html">
-   1. Getting Started
+   Getting Started
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Data-and-Variables.html">
-   2. Data and Variables
+   Data and Variables
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Some-Primitive-Functions.html">
-   3. Some Primitive Functions
+   Some Primitive Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="User-Defined-Functions.html">
-   4. User Defined Functions
+   User Defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="User-Defined-Functions.html#the-specialist-s-section">
-   5. The Specialist’s Section
+   The Specialist’s Section
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Appendices.html">
-   6. Appendices
+   Appendices
   </a>
  </li>
 </ul>
@@ -198,7 +190,9 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
-        
+        <a class="edit-button" href="https://github.com/RojerGS/MDAPL/edit/master/Introduction.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -2301,8 +2295,6 @@ a t e
 <span id="fig-back-to-c"></span><img alt="../res/back_to_C.png" src="../res/back_to_C.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">A sad man complaining about having to code in C#</span><a class="headerlink" href="#back-to-c" title="Permalink to this image">¶</a></p>
 </div>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 </div>
@@ -2335,14 +2327,15 @@ a t e
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="Getting-Started.html" title="next page"><span class="section-number">1. </span>Getting Started</a>
+    <a class='left-prev' id="prev-link" href="Debugging.html" title="previous page">Debugging</a>
+    <a class='right-next' id="next-link" href="Getting-Started.html" title="next page">Getting Started</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
-          By Bernard Legrand<br/>
+          By Bernard Legrand, contributions by Kim S. Andreasen, Daniel Baronet, Gitte Christensen, Peter Donnelly, Morten Kromberg, John Scholes, Adrian Smith and Tim JA. Smith. Reworked by Rodrigo Girão Serrão.<br/>
         
           <div class="extra_footer">
             <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">

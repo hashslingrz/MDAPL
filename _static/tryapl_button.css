@@ -1,0 +1,17 @@
+/* Code block button container */
+span.btncontainer {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    top: .2em;
+    right: .2em;
+}
+
+/* Override sphinx_copybutton styling */
+a.copybtn {
+    top: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+    display: flex !important;
+    margin-left: 0.3em !important;
+}
