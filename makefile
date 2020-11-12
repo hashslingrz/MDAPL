@@ -5,7 +5,9 @@ latex_build_folder = $(build_folder)/latex
 
 html: preprocess build_html publish_html
 
-dbg_html: preprocess python_reqs preprocess build_html
+dbg_html: python_reqs preprocess build_html
+
+dyalog_web: preprocess python_reqs preprocess build_html page_cleanup
 
 latex: preprocess build_latex
 
@@ -18,7 +20,7 @@ preprocess:
 	python3 scripts/preprocess.py
 
 build_html:
-	jb build $(book)
+	jb build --all $(book)
 
 build_latex:
 	jb build $(book) --builder latex
@@ -27,3 +29,6 @@ build_latex:
 
 publish_html:
 	ghp-import -npf $(html_build_folder)
+
+page_cleanup:
+	python3 scripts/page_cleanup.py
